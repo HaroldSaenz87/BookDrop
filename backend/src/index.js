@@ -4,7 +4,7 @@ import authRoutes from "./routes/authRoutes.js";
 import bookRoutes from "./routes/bookRoutes.js";
 import { connectDB } from "./lib/db.js";
 import cors from "cors";
-
+import job from "./lib/cron.js";
 
 // Initialize express 
 const app = express();
@@ -12,6 +12,7 @@ const app = express();
 // Set the port or default
 const PORT = process.env.PORT || 5000;
 
+job.start();
 // Middleware to parse incoming request
 app.use(express.json());
 app.use(cors());
