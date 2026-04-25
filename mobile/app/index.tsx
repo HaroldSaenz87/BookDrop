@@ -11,7 +11,7 @@ export default function Index() {
 
   useEffect(() => {
     checkAuth()
-  })
+  },[])
 
   return (
 

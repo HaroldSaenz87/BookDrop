@@ -80,9 +80,11 @@ export const useAuthStore = create<AuthState>((set) => ({
             const token = await AsyncStorage.getItem("token");
             const userJson = await AsyncStorage.getItem("user");
 
-            const user = userJson ? JSON.parse(userJson) : null;
+            if (token && userJson) {
+                const user = JSON.parse(userJson);
+                set({ token, user });
+            }
 
-            set({ token, user });
             
         } catch (error) {
 
@@ -140,5 +142,5 @@ export const useAuthStore = create<AuthState>((set) => ({
             
         }
     },
-    
+
 }));
