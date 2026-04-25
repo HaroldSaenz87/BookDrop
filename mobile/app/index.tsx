@@ -1,8 +1,17 @@
+import { useAuthStore } from "@/store/authStore";
 import { Link } from "expo-router";
+import { useEffect } from "react";
 import { Text, View, StyleSheet } from "react-native";
 
 // Landing page (WILL BE UPDATED LATER)
 export default function Index() {
+
+
+  const {user, token, checkAuth} = useAuthStore();
+
+  useEffect(() => {
+    checkAuth()
+  })
 
   return (
 
