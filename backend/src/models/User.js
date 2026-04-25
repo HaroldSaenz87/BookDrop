@@ -35,13 +35,19 @@ userSchema.pre("save", async function(next){
         return next();
     }
 
-    // Generate a salt with a cost factor of 10
-    const salt = await bcrypt.genSalt(10);
-    
-    // replace the plain text password with the hashed version
-    this.password = await bcrypt.hash(this.password, salt);
+    try {
+        // Generate a salt with a cost factor of 10
+        const salt = await bcrypt.genSalt(10);
+        
+        // replace the plain text password with the hashed version
+        this.password = await bcrypt.hash(this.password, salt);
 
-    next()
+        next();
+    } catch (error) {
+
+        next(error);
+    }
+
 
 });
 

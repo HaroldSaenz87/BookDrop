@@ -13,6 +13,7 @@ export default function Index() {
     checkAuth()
   },[])
 
+  
   return (
 
     // Just a welcom but all will be updated later
