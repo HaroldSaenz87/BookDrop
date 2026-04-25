@@ -28,25 +28,18 @@ const userSchema = new mongoose.Schema({
 }, {timestamps: true});  // Automatically adds createAt and updatedAt fields
 
 // Pre saved middleware that hashes the passwords automatically before saving to DB
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function(){
 
     // if password hasnt changed, skip the hashing to prevent double hashing
     if(!this.isModified("password")){
-        return next();
+        return;
     }
 
-    try {
-        // Generate a salt with a cost factor of 10
-        const salt = await bcrypt.genSalt(10);
-        
-        // replace the plain text password with the hashed version
-        this.password = await bcrypt.hash(this.password, salt);
-
-        next();
-    } catch (error) {
-
-        next(error);
-    }
+    // Generate a salt with a cost factor of 10
+    const salt = await bcrypt.genSalt(10);
+    
+    // replace the plain text password with the hashed version
+    this.password = await bcrypt.hash(this.password, salt);
 
 
 });
