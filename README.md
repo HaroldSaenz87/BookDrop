@@ -40,5 +40,6 @@ BookDrop is a modern mobile platform built with React Native and Expo that allow
 
 ## DEMO
 
+[Watch Demo](https://drive.google.com/file/d/1ieVHq63cUafHHxgSVDoIOMU43hG-LCcx/view?usp=sharing)
 
 
